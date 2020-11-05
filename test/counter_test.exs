@@ -4,14 +4,14 @@ defmodule CounterTest do
   setup do
     counter =
       start_supervised!(%{
-      :id => Counter,
-      :start => {Counter, :start_link, [10]}
-    })
+        :id => Counter,
+        :start => {Counter, :start_link, [10]}
+      })
 
     %{:counter => counter}
   end
 
-  test "state", %{:counter => counter}  do
+  test "state", %{:counter => counter} do
     assert Counter.state(counter) == 10
   end
 
@@ -21,5 +21,4 @@ defmodule CounterTest do
     Counter.inc(counter)
     assert Counter.state(counter) == 13
   end
-
 end

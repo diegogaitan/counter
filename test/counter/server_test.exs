@@ -6,7 +6,7 @@ defmodule Counter.ServerTest do
     %{:counter => counter}
   end
 
-  test "state", %{:counter => counter}  do
+  test "state", %{:counter => counter} do
     assert GenServer.call(counter, :state) == 5
   end
 
