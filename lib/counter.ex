@@ -1,18 +1,10 @@
 defmodule Counter do
-  @moduledoc """
-  Documentation for `Counter`.
-  """
+  alias Counter.Server
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Counter.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def start_link(initial_number) when is_number(initial_number) do
+    Server.start_link(initial_number)
   end
+
+  def state(counter), do: GenServer.call(counter, :state)
+  def inc(counter), do: GenServer.cast(counter, :inc)
 end
