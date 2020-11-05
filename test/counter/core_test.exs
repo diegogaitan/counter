@@ -3,5 +3,6 @@ defmodule Counter.CoreTest do
 
   test "inc" do
     assert Counter.Core.inc(10) == 11
+    assert Counter.Core.inc(10.1) == 11.1
   end
 end
