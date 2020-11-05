@@ -1,21 +1,43 @@
 # Counter
 
-**TODO: Add description**
+**Implementation of Counter using GenServer**
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `counter` to your list of dependencies in `mix.exs`:
+The file `.tool-versions` for [asdf](https://github.com/asdf-vm/asdf) contains the Elixir version to use: `1.11.1`.
+
+## Playing with the application
+
+Through the `Counter` module to call the API methods that encapsulate the
+OTP/GenServer calls:
 
 ```elixir
-def deps do
-  [
-    {:counter, "~> 0.1.0"}
-  ]
-end
+iex(1)> {:ok, counter} = Counter.start_link(20)
+{:ok, #PID<0.141.0>}
+iex(2)> Counter.state(counter)
+20
+iex(3)> Counter.inc(counter)
+:ok
+iex(4)> Counter.inc(counter)
+:ok
+iex(5)> Counter.inc(counter)
+:ok
+iex(6)> Counter.inc(counter)
+:ok
+iex(7)> Counter.state(counter)
+24
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/counter](https://hexdocs.pm/counter).
+## Running tests
 
+Run `mix test` :
+
+```
+➜  counter (master) ✗ mix test
+.....
+
+Finished in 0.04 seconds
+5 tests, 0 failures
+
+Randomized with seed 421695
+```
